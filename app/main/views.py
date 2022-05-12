@@ -1,8 +1,9 @@
 from flask import render_template,request,redirect,url_for
-from . import main
-from flask_login import login_required,current_user
-from ..models import User,Pitch,Comment
 from .forms import Pitch_Form, Update_Profile,CommentsForm
+from . import main
+
+from ..models import User,Pitch,Comment
+from flask_login import login_required,current_user
 from .. import db,photos
 
 
@@ -10,18 +11,13 @@ from .. import db,photos
 @main.route('/')
 def index():
     """
-    View root page function that returns the index page and its data
+    function to redirect to main page
     """
- 
-    
-    
     return render_template('index.html')
+
 @main.route('/all_pitches')
 def all_pitches():
     general = Pitch.query.all()
-    
-    
-    
     return render_template('all_pitches.html',general=general)
 
 
@@ -42,6 +38,7 @@ def product():
     comment = Comment.query.all()
     product = Pitch.query.filter_by(category = 'Product Pitch').all()
     return render_template('product.html',product=product,comment=comment)
+
 @main.route('/pickup')
 def pickup():
     comment = Comment.query.all()
