@@ -24,3 +24,17 @@ def signup():
         title = "New Account"
     return render_template('sign_up.html',signup_form = form)
 
+@auth.route('/login',methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username = form.username.data).first()
+        if user is not None and user.verify_password(form.password.data):
+            login_user(user,form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.all_pitches'))
+
+        else:
+            flash('Invalid username or Password')
+
+
+    return render_template('login.html',login_form = form)
