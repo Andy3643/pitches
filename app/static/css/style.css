@@ -1,0 +1,9 @@
+.bgdisplay{
+    background: url(../images/bg.jpg);
+}
+body{
+    background-color: red;
+}
+h1{
+    color: red;
+}

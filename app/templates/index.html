@@ -2,16 +2,22 @@
 {% import 'macros.html' as macro %} 
 {% block styles%}
     {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='../static/css/style.css')}}">
 {% endblock %}
-
+/home/moringa/Desktop/Python/pitches/app/static/css/style.css
 {% block content %}
-{{super()}}
+<div class="bgdisplay" style="background: url(../static/images/bg.jpg); 
+height: 100vh;
+background-position: center;
+">
 <div class="home text-center ">
-  <h1>WELCOME TO PITCHES</h1>
-  <p>Where you can pitch anything and maybe become famous;)</p>
+  <div style="color: white;
+  padding-top: 30vh;">
+  <h1>WELCOME TO PITCH PERFECT !!</h1>
+  <p>"You'll never get a second chance to make a great first impression."</p>
+  </div>
+  <a href="{{url_for('auth.login')}}" class= 'btn btn-success'> START PITCHING</a>
   
-  <a href="{{url_for('auth.login')}}" class= 'btn btn-dark'> START PITCHING</a>
-  
+</div>
 </div>
 {% endblock %}

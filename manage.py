@@ -1,13 +1,15 @@
-import os
 from datetime import datetime 
-from app import pitch_app,db
 from flask_script import Manager, Server
-from app.models import User
+from app import pitch_app,db
+from app.models import User,Pitch,Comment
+from  flask_migrate import Migrate, MigrateCommand
 
 
 
 
-app=pitch_app()
+app=pitch_app('development')
+
+
 migrate = Migrate(app,db)
 manager =  Manager(app)
 manager.add_command('server',Server(use_debugger=True))
@@ -16,7 +18,7 @@ manager.add_command('db',MigrateCommand)
 
 @manager.shell
 def  add_shell_context():
-    return {'db':db, 'User':User}
+    return dict(db=db,app=app,User=User,Pitch=Pitch,Comment=Comment)
 
 @manager.command
 def test():
@@ -27,5 +29,4 @@ def test():
 
 
 if __name__== "__main__":
-    db.create_all()
     manager.run()

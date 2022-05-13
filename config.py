@@ -1,11 +1,8 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-class Config(object):   
-     DEBUG = False
-     TESTING = False
+class Config():   
     
-     SECRET_KEY = 'secretkey1'
-     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+     SECRET_KEY ='secretkey1'
+     SQLALCHEMY_DATABASE_URI='postgresql://moringa:pass123@localhost/pitches'
      UPLOADED_PHOTOS_DEST ='app/static/photos'
 
      MAIL_SERVER = 'smtp.gmail.com'
@@ -15,18 +12,19 @@ class Config(object):
      MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
      MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
-class ProductionConfig(Config):
+class ProdConfig(Config):
     DEBUG = False
 
 
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
+# class StagingConfig(Config):
+#     DEVELOPMENT = True
+#     DEBUG = True
 
 
-class DevelopmentConfig(Config):
+class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI='postgresql://moringa:pass123@localhost/pitches'
 
 
 class TestingConfig(Config):
@@ -34,5 +32,7 @@ class TestingConfig(Config):
 
 
 config_options = {
-'test':TestingConfig
+'test':TestingConfig,
+'development':DevConfig,
+'production':ProdConfig
 }
