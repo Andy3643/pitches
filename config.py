@@ -2,7 +2,8 @@ import os
 class Config():   
     
      SECRET_KEY ='secretkey1'
-     SQLALCHEMY_DATABASE_URI='postgresql://moringa:pass123@localhost/pitches'
+     SQLALCHEMY_DATABASE_URI='postgres://sxonldexavnrpe:0741ac59b66b35841fa6bc5f79d8e1c4e6dfa4c4e965416ed5d51290c3f0bd79@ec2-54-165-184-219.compute-1.amazonaws.com:5432/d9t415rp1vba1c'
+    # SQLALCHEMY_DATABASE_URI='postgresql://moringa:pass123@localhost/pitches'
      UPLOADED_PHOTOS_DEST ='app/static/photos'
 
      MAIL_SERVER = 'smtp.gmail.com'
@@ -24,7 +25,8 @@ class ProdConfig(Config):
 class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI='postgresql://moringa:pass123@localhost/pitches'
+   # SQLALCHEMY_DATABASE_URI='postgresql://moringa:pass123@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI='postgres://sxonldexavnrpe:0741ac59b66b35841fa6bc5f79d8e1c4e6dfa4c4e965416ed5d51290c3f0bd79@ec2-54-165-184-219.compute-1.amazonaws.com:5432/d9t415rp1vba1c'
 
 
 class TestingConfig(Config):
