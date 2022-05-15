@@ -7,7 +7,8 @@ from  flask_migrate import Migrate, MigrateCommand
 
 
 
-app=pitch_app('development')
+#app=pitch_app('development')
+app=pitch_app('production')
 
 
 migrate = Migrate(app,db)
